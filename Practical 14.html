@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Functions and Scope</title>
+</head>
+<body>
+
+    <h2>User Defined Functions & Variable Scope</h2>
+
+    <button onclick="showResult()">Run Program</button>
+
+    <p id="output"></p>
+
+    <script>
+        // Global variables
+        var a = 10;
+        let b = 20;
+        const c = 30;
+
+        // User-defined function
+        function addNumbers(x, y) {
+            return x + y;
+        }
+
+        // Function to demonstrate scope
+        function showResult() {
+            let text = "";
+
+            // Calling user-defined function
+            let sum = addNumbers(5, 7);
+            text += "Sum from function: " + sum + "<br><br>";
+
+            // Block scope demonstration
+            if (true) {
+                var x = 100;      // function scope
+                let y = 200;      // block scope
+                const z = 300;    // block scope
+
+                text += "Inside block:<br>";
+                text += "var x = " + x + "<br>";
+                text += "let y = " + y + "<br>";
+                text += "const z = " + z + "<br><br>";
+            }
+
+            // Outside block
+            text += "Outside block:<br>";
+            text += "var x = " + x + "<br>";
+            text += "let y = Not Accessible<br>";
+            text += "const z = Not Accessible<br>";
+
+            document.getElementById("output").innerHTML = text;
+        }
+    </script>
+
+</body>
+</html>
